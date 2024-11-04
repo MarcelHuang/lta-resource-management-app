@@ -30,7 +30,7 @@ function App() {
       </p>
       <div className="flex min-h-screen items-center justify-center">
         <h1 className="text-3xl font-bold">
-          Welcome to LTA Resource Management App
+          Welcome to LTA Resource Management App!
         </h1>
     </div>
     </>
