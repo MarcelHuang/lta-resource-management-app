@@ -185,7 +185,6 @@ const Calendar: React.FC = () => {
 
   return (
     <div className="p-4">
-      <FilterPanel filters={filters} onFilterChange={setFilters} />
       
       {/* Enhanced Statistics Section */}
       <div className="mb-6 space-y-4">
@@ -247,6 +246,7 @@ const Calendar: React.FC = () => {
         </div>
       </div>
 
+      <FilterPanel filters={filters} onFilterChange={setFilters} />
       <ViewToggle currentView={currentView} onViewChange={setCurrentView} />
       
       {error && (
