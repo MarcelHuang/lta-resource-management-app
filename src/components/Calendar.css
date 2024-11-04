@@ -1,0 +1,122 @@
+/* Room type colors */
+.room-type-meeting-room {
+    background-color: #4CAF50 !important;
+    border-color: #388E3C !important;
+  }
+  
+  .room-type-discussion-room {
+    background-color: #2196F3 !important;
+    border-color: #1976D2 !important;
+  }
+  
+  .room-type-conference-room {
+    background-color: #9C27B0 !important;
+    border-color: #7B1FA2 !important;
+  }
+  
+  /* Booking status */
+  .booking-status-confirmed {
+    opacity: 1 !important;
+  }
+  
+  .booking-status-cancelled {
+    opacity: 0.5 !important;
+  }
+  
+  /* Legend colors */
+  .meeting-room-color {
+    background-color: #4CAF50;
+  }
+  
+  .discussion-room-color {
+    background-color: #2196F3;
+  }
+  
+  .conference-room-color {
+    background-color: #9C27B0;
+  }
+  
+  .confirmed-status {
+    background-color: #4CAF50;
+  }
+  
+  .cancelled-status {
+    background-color: #4CAF50;
+    opacity: 0.5;
+  }
+  
+  /* Event content styles */
+  .event-content {
+    color: white !important;
+  }
+  
+  .booking-status-cancelled .event-content {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  /* Override FullCalendar default styles */
+  .fc-event {
+    border: none !important;
+  }
+  
+  .fc-event-main {
+    padding: 2px !important;
+  }
+  
+  .fc-event-title {
+    font-weight: 500 !important;
+  }
+
+/* Time Grid View Styles */
+.fc-timegrid-event {
+    min-height: 30px !important;
+    border: none !important;
+  }
+  
+  .fc-timegrid-event .fc-event-main {
+    padding: 2px 4px !important;
+  }
+  
+  .fc-timegrid-slot {
+    height: 40px !important;
+  }
+  
+  .fc .fc-timegrid-slot-label {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  /* Improve readability in week/day view */
+  .fc-timegrid-event .event-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Adjust event colors for better visibility in time grid */
+  .room-type-meeting-room.fc-timegrid-event {
+    background-color: #4CAF50 !important;
+  }
+  
+  .room-type-discussion-room.fc-timegrid-event {
+    background-color: #2196F3 !important;
+  }
+  
+  .room-type-conference-room.fc-timegrid-event {
+    background-color: #9C27B0 !important;
+  }
+  
+  .booking-status-cancelled.fc-timegrid-event {
+    opacity: 0.5 !important;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .fc-timegrid-event .event-content {
+      font-size: 0.75rem;
+    }
+    
+    .fc .fc-timegrid-slot-label {
+      font-size: 0.75rem;
+    }
+  }
