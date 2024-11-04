@@ -91,7 +91,7 @@ function parseCsvText(csvText: string, filename: string): Booking[] {
 
     const bookings = lines.slice(1)
       .filter(line => line.trim())
-      .map((line, index) => {
+      .map(line => {
         const values = line.split(',');
         const booking: any = {};
         

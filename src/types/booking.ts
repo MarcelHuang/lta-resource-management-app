@@ -18,3 +18,24 @@ export interface Booking {
     confirmed: Booking[];
     cancelled: Booking[];
   }
+
+  export interface FilterState {
+    status: {
+      CONFIRMED: boolean;
+      CANCELLED: boolean;
+    };
+    roomType: {
+      'MEETING ROOM': boolean;
+      'DISCUSSION ROOM': boolean;
+      'CONFERENCE ROOM': boolean;
+    };
+    brand: {
+      'COLAB': boolean;
+      'ITCD': boolean;
+    };
+  }
+  
+  export interface FilterPanelProps {
+    filters: FilterState;
+    onFilterChange: (filters: FilterState) => void;
+  }

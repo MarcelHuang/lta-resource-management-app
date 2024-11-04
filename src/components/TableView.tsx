@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
-import { Booking } from '../types/booking';
 import { format } from 'date-fns';
+import type { Booking, FilterState } from '../types/booking';
+import { isValidRoomType } from '../utils/typeGuards';
 
 interface TableViewProps {
   bookings: Booking[];
-  filters: {
-    status: {
-      CONFIRMED: boolean;
-      CANCELLED: boolean;
-    };
-    roomType: {
-      'MEETING ROOM': boolean;
-      'DISCUSSION ROOM': boolean;
-      'CONFERENCE ROOM': boolean;
-    };
-  };
+  filters: FilterState;
 }
 
 const TableView: React.FC<TableViewProps> = ({ bookings, filters }) => {
-  const [sortConfig, setSortConfig] = useState<{
-    key: keyof Booking;
-    direction: 'asc' | 'desc';
-  }>({ key: 'date', direction: 'asc' });
-
-  // Filter bookings based on current filters
-  const filteredBookings = bookings.filter(booking => 
-    filters.status[booking.status] && filters.roomType[booking.type]
-  );
-
+    const [sortConfig, setSortConfig] = useState<{
+      key: keyof Booking;
+      direction: 'asc' | 'desc';
+    }>({ key: 'date', direction: 'asc' });
+  
+    // Filter bookings based on current filters
+    const filteredBookings = bookings.filter(booking => {
+      const isValidStatus = booking.status === 'CONFIRMED' || booking.status === 'CANCELLED';
+      const bookingBrand = booking.code.includes('COLAB') ? 'COLAB' : 'ITCD';
+      
+      return (
+        isValidStatus && 
+        filters.status[booking.status as keyof typeof filters.status] && 
+        isValidRoomType(booking.type) && 
+        filters.roomType[booking.type] &&
+        filters.brand[bookingBrand as keyof typeof filters.brand]
+      );
+    });
+  
   // Sort bookings
   const sortedBookings = [...filteredBookings].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {

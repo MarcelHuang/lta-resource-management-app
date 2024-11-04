@@ -6,6 +6,8 @@ import { Booking } from '../types/booking';
 import { loadAllBookings } from '../services/bookingService';
 import TableView from './TableView';
 import FilterPanel from './FilterPanel';
+import { isValidRoomType } from '../utils/typeGuards';
+import type { FilterState } from '../types/booking';
 import './Calendar.css';
 
 
@@ -118,15 +120,15 @@ const Calendar: React.FC = () => {
 
   useEffect(() => {
     const filteredEvents = allEvents.filter(event => {
-      const booking = event.extendedProps.booking;
-      const bookingBrand = booking.code.includes('COLAB') ? 'COLAB' : 'ITCD';
-      
-      return (
-        filters.status[booking.status] && 
-        filters.roomType[booking.type] &&
-        filters.brand[bookingBrand]
-      );
-    });
+        const booking = event.extendedProps.booking;
+        const bookingBrand = booking.code.includes('COLAB') ? 'COLAB' : 'ITCD';
+        
+        return (
+          filters.status[booking.status] && 
+          isValidRoomType(booking.type) && filters.roomType[booking.type] &&
+          filters.brand[bookingBrand]
+        );
+      });
     setEvents(filteredEvents);
   }, [filters, allEvents]);
 
